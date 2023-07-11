@@ -74,17 +74,16 @@ void PrintVector(vector<int> vector)
     cout << endl;
 }
 
-void CreateRandomArray(vector<int> numbers, vector<int> vector)
+vector<int> CreateRandomArray(vector<int> numbers, vector<int> vector)
 {
-    int max = numbers.size();
-
-    for (int i = 0; i < max; i++)
+    while (numbers.size() != 0)
     {
         int random = rand() % numbers.size();
         vector.push_back(numbers[random]);
-        numbers.erase(vector.begin() + random);
-        PrintVector(vector);
+        numbers.erase(numbers.begin() + random);
     }
+
+    return vector;
 }
 
 int main(int argc, char* argv[]) 
@@ -181,18 +180,17 @@ int main(int argc, char* argv[])
         randomWithRepArray.push_back(random);
     }
 
-    PrintVector(ascArray);
-    PrintVector(descArray);
-    PrintVector(randomWithRepArray);
-
     vector<int> numbers;
     numbers.assign(ascArray.begin(), ascArray.end());
 
-    PrintVector(numbers);
+    randomArray = CreateRandomArray(numbers, randomArray);
 
-    CreateRandomArray(numbers, randomArray);
-
+    PrintVector(ascArray);
+    PrintVector(descArray);
+    PrintVector(randomWithRepArray);
     PrintVector(randomArray);
+
+    cout << "Set de datos generados" << endl;
 
     return 0;
 }
