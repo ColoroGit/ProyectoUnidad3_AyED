@@ -133,6 +133,8 @@ int main(int argc, char* argv[])
         return 0;
     }
 
+    file.close();
+
     int maxRace1 = GetMax(infs.front(), sups.front());
     infs.pop_front();
     sups.pop_front();
@@ -140,8 +142,6 @@ int main(int argc, char* argv[])
     infs.pop_front();
     sups.pop_front();
     int maxRace3 = GetMax(infs.front(), sups.front());
-    infs.pop_front();
-    sups.pop_front();
 
     int op;
     bool asc;
@@ -167,10 +167,8 @@ int main(int argc, char* argv[])
 
     vector<int> ascArray;
     vector<int> descArray;
-    vector<int> randomArray;
     vector<int> randomWithRepArray;
-
-    int random;
+    vector<int> randomArray;
     
     for (int i = 0; i < maxRace1 ; ++i) 
     {
@@ -182,7 +180,6 @@ int main(int argc, char* argv[])
 
     vector<int> numbers;
     numbers.assign(ascArray.begin(), ascArray.end());
-
     randomArray = CreateRandomArray(numbers, randomArray);
 
     PrintVector(ascArray);
