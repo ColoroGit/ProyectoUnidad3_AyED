@@ -15,24 +15,84 @@ using namespace std;
 
 //https://www.geeksforgeeks.org/measure-execution-time-with-high-precision-in-c-c++
 
+void Swap(int* xp, int* yp)
+{
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+
 void SelectionSort(vector<int>& arr) 
 {
     int n = arr.size();
+
     for (int i = 0; i < n ; ++i) 
     {
         for (int j = i; j < n ; ++j) 
         {
             if (arr[j] < arr[i]) 
             {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                Swap(&arr[i], &arr[j]);
             }
         }
     }
 }
 
-double getResultFromAlg(vector<int>& arr,int option) 
+void BubbleSort(vector<int>& arr)
+{
+    int i, j;
+    int n = arr.size();
+
+    for (i = 0; i < n - 1; i++) 
+    {
+        for (j = 0; j < n - i - 1; j++) 
+        {
+            if (arr[j] > arr[j + 1]) 
+            {
+                Swap(&arr[j], &arr[j + 1]);
+            }
+        }
+    }
+}
+
+void InsertionSort(vector<int>& arr)
+{
+    int i, j;
+    int n = arr.size();
+
+    for (i = 1; i < n; i++)
+    {
+        j = i;
+        while (j > 0 && arr[j - 1] > arr[j])
+        {
+            Swap(&arr[j], &arr[j - 1]);
+            j = j - 1;
+        }
+    }
+}
+
+void ShellSort(vector<int>& arr)
+{
+    int n = arr.size();
+
+    for (int gap = n/2; gap > 0; gap /= 2)
+    {
+        for (int i = gap; i < n; i++)
+        {
+            int temp = arr[i];
+            int j;
+
+            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
+            {
+                arr[j] = arr[j - gap];
+            }
+
+            arr[j] = temp;
+        }
+    }
+}
+
+double GetTimeTakenFromAlg(vector<int>& arr, void (*func)(vector<int>& arr)) 
 {
     time_t start, end;
     double time_taken;
@@ -40,7 +100,7 @@ double getResultFromAlg(vector<int>& arr,int option)
     time(&start);
     ios_base::sync_with_stdio(false);
     
-    SelectionSort(arr);
+    func(arr);
     
     time(&end);
     time_taken = double(end - start);
@@ -182,12 +242,67 @@ int main(int argc, char* argv[])
     numbers.assign(ascArray.begin(), ascArray.end());
     randomArray = CreateRandomArray(numbers, randomArray);
 
-    PrintVector(ascArray);
-    PrintVector(descArray);
-    PrintVector(randomWithRepArray);
-    PrintVector(randomArray);
+    cout << "Set de datos generados" << endl << endl 
+    << "\tInician las carreras" << endl << endl;
 
-    cout << "Set de datos generados" << endl;
+    cout << "Carrera del tablero: Modo ordenado" << endl << endl;
+
+    unordered_map<string, double> resultsAsc;
+
+    numbers.assign(ascArray.begin(), ascArray.end());
+    resultsAsc["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+
+    numbers.assign(ascArray.begin(), ascArray.end());
+    resultsAsc["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+
+    numbers.assign(ascArray.begin(), ascArray.end());
+    resultsAsc["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+
+    numbers.assign(ascArray.begin(), ascArray.end());
+    resultsAsc["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+    
+    numbers.assign(ascArray.begin(), ascArray.end());
+    resultsAsc["Merge Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort); //MergeSort
+    numbers.assign(ascArray.begin(), ascArray.end());
+    resultsAsc["Quick Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort); //QuickSort
+    numbers.assign(ascArray.begin(), ascArray.end());
+    resultsAsc["Heap Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort); //HeapSort
+
+    int id = 1;
+    for (const auto& pair : resultsAsc) 
+    {
+        const string& key = pair.first;
+        double value = pair.second;
+        cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+        id++;
+    }
+
+    cout << "Carrera del tablero: Modo inversamente ordenado" << endl;
+
+    cout << "Carrera del tablero: Modo aleatorio con repeticion" << endl;
+
+    cout << "Carrera del tablero: Modo aleatorio sin repeticion" << endl;
+
+
+
+    cout << "Carrera de los caminos entre aldeas: Modo ordenado" << endl;
+    
+    cout << "Carrera de los caminos entre aldeas: Modo inversamente ordenado" << endl;
+
+    cout << "Carrera de los caminos entre aldeas: Modo aleatorio con repeticion" << endl;
+
+    cout << "Carrera de los caminos entre aldeas: Modo aleatorio sin repeticion" << endl;
+
+
+
+    cout << "Carrera de objetos del inventario: Modo ordenado" << endl;
+    
+    cout << "Carrera de objetos del inventario: Modo inversamente ordenado" << endl;
+
+    cout << "Carrera de objetos del inventario: Modo aleatorio con repeticion" << endl;
+
+    cout << "Carrera de objetos del inventario: Modo aleatorio sin repeticion" << endl;
+
 
     return 0;
 }
