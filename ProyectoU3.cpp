@@ -15,6 +15,15 @@ using namespace std;
 
 //https://www.geeksforgeeks.org/measure-execution-time-with-high-precision-in-c-c++
 
+void PrintVector(vector<int> vector)
+{
+    for (int i : vector)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+}
+
 void Swap(int* xp, int* yp)
 {
     int temp = *xp;
@@ -92,19 +101,162 @@ void ShellSort(vector<int>& arr)
     }
 }
 
+void UseMergeSort(vector<int>& arr)
+{
+
+}
+
+vector<int> Merge(vector<int> a, vector<int> b)
+{
+    vector<int> c;
+
+    while (!a.empty() && !b.empty())
+    {
+        if (a[0] > b[0])
+        {
+            c.push_back(b[0]);
+            b.erase(b.begin());
+        }
+        else
+        {
+            c.push_back(a[0]);
+            a.erase(a.begin());
+        }
+    }
+
+    while (!a.empty())
+    {
+        c.push_back(a[0]);
+        a.erase(a.begin());
+    }
+
+    while (!b.empty())
+    {
+        c.push_back(b[0]);
+        b.erase(b.begin());
+    }
+
+    return c;
+}
+
+vector<int> MergeSort(vector<int>& arr)
+{
+    int n = arr.size();
+
+    if (n == 1)
+    {
+        return arr;
+    }
+
+    vector<int> arr1, arr2;
+    arr1.assign(arr.begin(), arr.begin() + n/2);
+    arr2.assign(arr.begin() + n/2, arr.end());
+    
+    arr1 = MergeSort(arr1);
+    arr2 = MergeSort(arr2);
+
+    return Merge(arr1, arr2);
+}
+
+void UseQuicksSort(vector<int>& arr)
+{
+
+}
+
+int Partition(vector<int>& arr, int start, int end) //SE PUEDE MEJORAR Y ACORTAR (REVISAR VIDEO DEL PROFE)
+{
+    int pivot = arr[start];
+ 
+    int count = 0;
+    for (int i = start + 1; i <= end; i++) 
+    {
+        if (arr[i] <= pivot)
+        {
+            count++;
+        }
+    }
+
+    int pivotIndex = start + count;
+    Swap(&arr[pivotIndex], &arr[start]);
+
+    int i = start, j = end;
+ 
+    while (i < pivotIndex && j > pivotIndex) 
+    {
+        while (arr[i] <= pivot) 
+        {
+            i++;
+        }
+ 
+        while (arr[j] > pivot) 
+        {
+            j--;
+        }
+ 
+        if (i < pivotIndex && j > pivotIndex) 
+        {
+            swap(arr[i++], arr[j--]);
+        }
+    }
+ 
+    return pivotIndex;
+}
+
+void QuickSort(vector<int>& arr, int start, int end)
+{
+    if (start >= end)
+    {
+        return;
+    }
+
+    int p = Partition(arr, start, end);
+ 
+    QuickSort(arr, start, p - 1);
+    QuickSort(arr, p + 1, end);
+}
+
+void HeapSort(vector<int>& arr)
+{
+    make_heap(arr.begin(), arr.end());
+    sort_heap(arr.begin(), arr.end()); //Forma fácil de usar HeapSort (its almost premade)
+}
+
 double GetTimeTakenFromAlg(vector<int>& arr, void (*func)(vector<int>& arr)) 
 {
     time_t start, end;
     double time_taken;
 
-    time(&start);
-    ios_base::sync_with_stdio(false);
-    
-    func(arr);
-    
-    time(&end);
-    time_taken = double(end - start);
-    
+    if (func == &UseMergeSort)
+    {
+        time(&start);
+        ios_base::sync_with_stdio(false);
+        
+        arr = MergeSort(arr);
+        
+        time(&end);
+        time_taken = double(end - start);
+    }
+    else if (func == &UseQuicksSort)
+    {
+        time(&start);
+        ios_base::sync_with_stdio(false);
+        
+        QuickSort(arr, 0, arr.size() - 1);
+        
+        time(&end);
+        time_taken = double(end - start);
+    }
+    else
+    {
+        time(&start);
+        ios_base::sync_with_stdio(false);
+        
+        func(arr);
+        
+        time(&end);
+        time_taken = double(end - start);
+    }
+
     return time_taken;
 }
 
@@ -123,15 +275,6 @@ bool IsNumber(string s) //Funcion para saber si un string entregado es un númer
 int GetMax(int inf, int sup)
 {
     return inf + (rand() % (sup - inf));
-}
-
-void PrintVector(vector<int> vector)
-{
-    for (int i : vector)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
 }
 
 vector<int> CreateRandomArray(vector<int> numbers, vector<int> vector)
@@ -262,11 +405,13 @@ int main(int argc, char* argv[])
     resultsAsc["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
     
     numbers.assign(ascArray.begin(), ascArray.end());
-    resultsAsc["Merge Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort); //MergeSort
+    resultsAsc["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+
     numbers.assign(ascArray.begin(), ascArray.end());
-    resultsAsc["Quick Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort); //QuickSort
+    resultsAsc["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuicksSort);
+
     numbers.assign(ascArray.begin(), ascArray.end());
-    resultsAsc["Heap Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort); //HeapSort
+    resultsAsc["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
     int id = 1;
     for (const auto& pair : resultsAsc) 
