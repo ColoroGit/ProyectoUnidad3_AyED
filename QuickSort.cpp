@@ -86,7 +86,7 @@ vector<int> CreateRandomArray(vector<int> numbers, vector<int> vector)
 
 int main()
 {
-    int maxRace1 = 32000; //Cambiar al valor deseado
+    int maxRace1 = 100000; //Cambiar al valor deseado
     vector<int> ascArray;
     vector<int> descArray;
     vector<int> randomWithRepArray;

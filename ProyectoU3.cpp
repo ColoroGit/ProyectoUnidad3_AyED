@@ -674,443 +674,443 @@ int main(int argc, char* argv[])
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
-        // cout << endl << "Carrera del tablero: Modo inversamente ordenado" << endl << endl;
+        cout << endl << "Carrera del tablero: Modo inversamente ordenado" << endl << endl;
 
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
         
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
 
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
-        // id = 1;
-        // minTime = 1000000;
+        id = 1;
+        minTime = 1000000;
         
-        // for (const auto& pair : results) 
-        // {
-        //     const string& key = pair.first;
-        //     double value = pair.second;
-        //     cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-        //     if (value < minTime)
-        //     {
-        //         minTime = value;
-        //         minTimeAlg = key;
-        //     }
-        //     id++;
-        // }
+        for (const auto& pair : results) 
+        {
+            const string& key = pair.first;
+            double value = pair.second;
+            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+            if (value < minTime)
+            {
+                minTime = value;
+                minTimeAlg = key;
+            }
+            id++;
+        }
 
-        // cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
+        cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
-        // cout << endl << "Carrera del tablero: Modo aleatorio con repeticion" << endl << endl;
+        cout << endl << "Carrera del tablero: Modo aleatorio con repeticion" << endl << endl;
 
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
         
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
 
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
-        // id = 1;
-        // minTime = 1000000;
+        id = 1;
+        minTime = 1000000;
         
-        // for (const auto& pair : results) 
-        // {
-        //     const string& key = pair.first;
-        //     double value = pair.second;
-        //     cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-        //     if (value < minTime)
-        //     {
-        //         minTime = value;
-        //         minTimeAlg = key;
-        //     }
-        //     id++;
-        // }
+        for (const auto& pair : results) 
+        {
+            const string& key = pair.first;
+            double value = pair.second;
+            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+            if (value < minTime)
+            {
+                minTime = value;
+                minTimeAlg = key;
+            }
+            id++;
+        }
 
-        // cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
+        cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
 
-        // cout << endl << "Carrera del tablero: Modo aleatorio sin repeticion" << endl << endl;
+        cout << endl << "Carrera del tablero: Modo aleatorio sin repeticion" << endl << endl;
 
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
 
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
 
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
-        // id = 1;
-        // minTime = 1000000;
+        id = 1;
+        minTime = 1000000;
         
-        // for (const auto& pair : results) 
-        // {
-        //     const string& key = pair.first;
-        //     double value = pair.second;
-        //     cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-        //     if (value < minTime)
-        //     {
-        //         minTime = value;
-        //         minTimeAlg = key;
-        //     }
-        //     id++;
-        // }
+        for (const auto& pair : results) 
+        {
+            const string& key = pair.first;
+            double value = pair.second;
+            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+            if (value < minTime)
+            {
+                minTime = value;
+                minTimeAlg = key;
+            }
+            id++;
+        }
 
-        // cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
+        cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
 
         //INICIO CARRERA DE LOS CAMINOS ENTRE ALDEAS
-        // cout << endl << "************************************************************" << endl;
+        cout << endl << "************************************************************" << endl;
 
-        // ascArray.clear();
-        // descArray.clear();
-        // randomWithRepArray.clear();
-        // randomArray.clear();
+        ascArray.clear();
+        descArray.clear();
+        randomWithRepArray.clear();
+        randomArray.clear();
 
-        // for (int i = 0; i < maxRace2 ; ++i) 
-        // {
-        //     ascArray.push_back(i + 1);
-        //     descArray.push_back(maxRace2 - i);
-        //     int random = 1 + rand() % (maxRace2);
-        //     randomWithRepArray.push_back(random);
-        // }
+        for (int i = 0; i < maxRace2 ; ++i) 
+        {
+            ascArray.push_back(i + 1);
+            descArray.push_back(maxRace2 - i);
+            int random = 1 + rand() % (maxRace2);
+            randomWithRepArray.push_back(random);
+        }
 
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // randomArray = CreateRandomArray(numbers, randomArray);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        randomArray = CreateRandomArray(numbers, randomArray);
 
-        // cout << endl << "Carrera de los caminos entre aldeas: Modo ordenado" << endl << endl;
+        cout << endl << "Carrera de los caminos entre aldeas: Modo ordenado" << endl << endl;
 
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
-        // id = 1;
-        // minTime = 1000000;
+        id = 1;
+        minTime = 1000000;
         
-        // for (const auto& pair : results) 
-        // {
-        //     const string& key = pair.first;
-        //     double value = pair.second;
-        //     cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-        //     if (value < minTime)
-        //     {
-        //         minTime = value;
-        //         minTimeAlg = key;
-        //     }
-        //     id++;
-        // }
+        for (const auto& pair : results) 
+        {
+            const string& key = pair.first;
+            double value = pair.second;
+            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+            if (value < minTime)
+            {
+                minTime = value;
+                minTimeAlg = key;
+            }
+            id++;
+        }
 
-        // cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
+        cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
 
-        // cout << endl << "Carrera de los caminos entre aldeas: Modo inversamente ordenado" << endl << endl;
+        cout << endl << "Carrera de los caminos entre aldeas: Modo inversamente ordenado" << endl << endl;
 
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
-        // id = 1;
-        // minTime = 1000000;
+        id = 1;
+        minTime = 1000000;
         
-        // for (const auto& pair : results) 
-        // {
-        //     const string& key = pair.first;
-        //     double value = pair.second;
-        //     cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-        //     if (value < minTime)
-        //     {
-        //         minTime = value;
-        //         minTimeAlg = key;
-        //     }
-        //     id++;
-        // }
+        for (const auto& pair : results) 
+        {
+            const string& key = pair.first;
+            double value = pair.second;
+            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+            if (value < minTime)
+            {
+                minTime = value;
+                minTimeAlg = key;
+            }
+            id++;
+        }
 
-        // cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
+        cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
 
-        // cout << endl << "Carrera de los caminos entre aldeas: Modo aleatorio con repeticion" << endl << endl;
+        cout << endl << "Carrera de los caminos entre aldeas: Modo aleatorio con repeticion" << endl << endl;
 
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
-        // id = 1;
-        // minTime = 1000000;
+        id = 1;
+        minTime = 1000000;
         
-        // for (const auto& pair : results) 
-        // {
-        //     const string& key = pair.first;
-        //     double value = pair.second;
-        //     cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-        //     if (value < minTime)
-        //     {
-        //         minTime = value;
-        //         minTimeAlg = key;
-        //     }
-        //     id++;
-        // }
+        for (const auto& pair : results) 
+        {
+            const string& key = pair.first;
+            double value = pair.second;
+            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+            if (value < minTime)
+            {
+                minTime = value;
+                minTimeAlg = key;
+            }
+            id++;
+        }
 
-        // cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
+        cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
 
-        // cout << endl << "Carrera de los caminos entre aldeas: Modo aleatorio sin repeticion" << endl << endl;
+        cout << endl << "Carrera de los caminos entre aldeas: Modo aleatorio sin repeticion" << endl << endl;
 
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
-        // id = 1;
-        // minTime = 1000000;
+        id = 1;
+        minTime = 1000000;
         
-        // for (const auto& pair : results) 
-        // {
-        //     const string& key = pair.first;
-        //     double value = pair.second;
-        //     cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-        //     if (value < minTime)
-        //     {
-        //         minTime = value;
-        //         minTimeAlg = key;
-        //     }
-        //     id++;
-        // }
+        for (const auto& pair : results) 
+        {
+            const string& key = pair.first;
+            double value = pair.second;
+            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+            if (value < minTime)
+            {
+                minTime = value;
+                minTimeAlg = key;
+            }
+            id++;
+        }
 
-        // cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
+        cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
 
-        // //INICIO DE LAS CARRERAS DE OBJETOS DEL INVENTARIO
-        // cout << endl << "************************************************************" << endl;
+        //INICIO DE LAS CARRERAS DE OBJETOS DEL INVENTARIO
+        cout << endl << "************************************************************" << endl;
 
-        // ascArray.clear();
-        // descArray.clear();
-        // randomWithRepArray.clear();
-        // randomArray.clear();
+        ascArray.clear();
+        descArray.clear();
+        randomWithRepArray.clear();
+        randomArray.clear();
 
-        // for (int i = 0; i < maxRace3 ; ++i) 
-        // {
-        //     ascArray.push_back(i + 1);
-        //     descArray.push_back(maxRace3 - i);
-        //     int random = 1 + rand() % (maxRace3);
-        //     randomWithRepArray.push_back(random);
-        // }
+        for (int i = 0; i < maxRace3 ; ++i) 
+        {
+            ascArray.push_back(i + 1);
+            descArray.push_back(maxRace3 - i);
+            int random = 1 + rand() % (maxRace3);
+            randomWithRepArray.push_back(random);
+        }
 
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // randomArray = CreateRandomArray(numbers, randomArray);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        randomArray = CreateRandomArray(numbers, randomArray);
 
-        // cout << endl << "Carrera de objetos del inventario: Modo ordenado" << endl << endl;
+        cout << endl << "Carrera de objetos del inventario: Modo ordenado" << endl << endl;
 
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-        // numbers.assign(ascArray.begin(), ascArray.end());
-        // results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+        numbers.assign(ascArray.begin(), ascArray.end());
+        results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
-        // id = 1;
-        // minTime = 1000000;
+        id = 1;
+        minTime = 1000000;
         
-        // for (const auto& pair : results) 
-        // {
-        //     const string& key = pair.first;
-        //     double value = pair.second;
-        //     cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-        //     if (value < minTime)
-        //     {
-        //         minTime = value;
-        //         minTimeAlg = key;
-        //     }
-        //     id++;
-        // }
+        for (const auto& pair : results) 
+        {
+            const string& key = pair.first;
+            double value = pair.second;
+            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+            if (value < minTime)
+            {
+                minTime = value;
+                minTimeAlg = key;
+            }
+            id++;
+        }
 
-        // cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
+        cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
 
-        // cout << endl << "Carrera de objetos del inventario: Modo inversamente ordenado" << endl << endl;
+        cout << endl << "Carrera de objetos del inventario: Modo inversamente ordenado" << endl << endl;
 
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-        // numbers.assign(descArray.begin(), descArray.end());
-        // results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+        numbers.assign(descArray.begin(), descArray.end());
+        results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
-        // id = 1;
-        // minTime = 1000000;
+        id = 1;
+        minTime = 1000000;
         
-        // for (const auto& pair : results) 
-        // {
-        //     const string& key = pair.first;
-        //     double value = pair.second;
-        //     cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-        //     if (value < minTime)
-        //     {
-        //         minTime = value;
-        //         minTimeAlg = key;
-        //     }
-        //     id++;
-        // }
+        for (const auto& pair : results) 
+        {
+            const string& key = pair.first;
+            double value = pair.second;
+            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+            if (value < minTime)
+            {
+                minTime = value;
+                minTimeAlg = key;
+            }
+            id++;
+        }
 
-        // cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
+        cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
 
-        // cout << endl << "Carrera de objetos del inventario: Modo aleatorio con repeticion" << endl << endl;
+        cout << endl << "Carrera de objetos del inventario: Modo aleatorio con repeticion" << endl << endl;
 
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-        // numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
-        // results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+        numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
+        results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
-        // id = 1;
-        // minTime = 1000000;
+        id = 1;
+        minTime = 1000000;
         
-        // for (const auto& pair : results) 
-        // {
-        //     const string& key = pair.first;
-        //     double value = pair.second;
-        //     cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-        //     if (value < minTime)
-        //     {
-        //         minTime = value;
-        //         minTimeAlg = key;
-        //     }
-        //     id++;
-        // }
+        for (const auto& pair : results) 
+        {
+            const string& key = pair.first;
+            double value = pair.second;
+            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+            if (value < minTime)
+            {
+                minTime = value;
+                minTimeAlg = key;
+            }
+            id++;
+        }
 
-        // cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
+        cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
 
-        // cout << endl << "Carrera de objetos del inventario: Modo aleatorio sin repeticion" << endl << endl;
+        cout << endl << "Carrera de objetos del inventario: Modo aleatorio sin repeticion" << endl << endl;
 
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-        // numbers.assign(randomArray.begin(), randomArray.end());
-        // results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Seleciont Sort"] = GetTimeTakenFromAlg(numbers, &SelectionSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Bubble Sort"] = GetTimeTakenFromAlg(numbers, &BubbleSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Insertion Sort"] = GetTimeTakenFromAlg(numbers, &InsertionSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+        numbers.assign(randomArray.begin(), randomArray.end());
+        results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
-        // id = 1;
-        // minTime = 1000000;
+        id = 1;
+        minTime = 1000000;
         
-        // for (const auto& pair : results) 
-        // {
-        //     const string& key = pair.first;
-        //     double value = pair.second;
-        //     cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-        //     if (value < minTime)
-        //     {
-        //         minTime = value;
-        //         minTimeAlg = key;
-        //     }
-        //     id++;
-        // }
+        for (const auto& pair : results) 
+        {
+            const string& key = pair.first;
+            double value = pair.second;
+            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
+            if (value < minTime)
+            {
+                minTime = value;
+                minTimeAlg = key;
+            }
+            id++;
+        }
 
-        // cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
+        cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
 
     }
     else
