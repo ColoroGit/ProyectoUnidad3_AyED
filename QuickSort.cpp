@@ -10,8 +10,12 @@
 #include <ctime>
 #include <bits/stdc++.h>
 #include <random>
+#include <chrono>
 
 using namespace std;
+using std::chrono::high_resolution_clock;
+using std::chrono::duration;
+using std::chrono::duration_cast;
 
 void PrintVector(vector<int> vector)
 {
@@ -57,19 +61,14 @@ void QuickSort(vector<int>& arr, int start, int end)
     QuickSort(arr, p + 1, end);
 }
 
-double GetTimeTakenFromAlg(vector<int>& arr, void (*func)(vector<int>& arr)) 
+auto GetTimeTakenFromAlg(vector<int>& arr, void (*func)(vector<int>& arr)) 
 {
-    time_t start, end;
-    double time_taken;
+    auto start = high_resolution_clock::now();
 
-    time(&start);
-    ios_base::sync_with_stdio(false);
-    
     QuickSort(arr, 0, arr.size() - 1);
-    
-    time(&end);
-    time_taken = double(end - start);
-    return time_taken;
+
+    auto end = high_resolution_clock::now();
+    return duration_cast<duration<double>>(end - start);
 }
 
 vector<int> CreateRandomArray(vector<int> numbers, vector<int> vector)
@@ -86,7 +85,7 @@ vector<int> CreateRandomArray(vector<int> numbers, vector<int> vector)
 
 int main()
 {
-    int maxRace1 = 100000; //Cambiar al valor deseado
+    int maxRace1 = 32000; //Cambiar al valor deseado
     vector<int> ascArray;
     vector<int> descArray;
     vector<int> randomWithRepArray;
@@ -100,8 +99,6 @@ int main()
         randomWithRepArray.push_back(random);
     }
 
-    double time_taken;
-
     vector<int> numbers;
 
     cout << "inicio Ordenamiento" << endl;
@@ -109,9 +106,9 @@ int main()
     numbers.assign(ascArray.begin(), ascArray.end()); //Asignarle a numbers los distintos arreglos
     randomArray = CreateRandomArray(numbers, randomArray);
 
-    time_taken = GetTimeTakenFromAlg(numbers, &UseQuickSort);
+    duration<double> time_taken = GetTimeTakenFromAlg(numbers, &UseQuickSort);
 
-    cout << fixed << time_taken << setprecision(5) << endl;
+    cout << time_taken.count() << endl;
 
     return 0;
 }

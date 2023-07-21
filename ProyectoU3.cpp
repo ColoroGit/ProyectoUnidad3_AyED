@@ -10,8 +10,12 @@
 #include <ctime>
 #include <bits/stdc++.h>
 #include <random>
+#include <chrono>
 
 using namespace std;
+using std::chrono::high_resolution_clock;
+using std::chrono::duration;
+using std::chrono::duration_cast;
 
 //https://www.geeksforgeeks.org/measure-execution-time-with-high-precision-in-c-c++
 
@@ -440,64 +444,98 @@ void InverseHeapSort(vector<int>& arr)
     }        
 }
 
-double GetTimeTakenFromAlg(vector<int>& arr, void (*func)(vector<int>& arr)) 
+auto GetTimeTakenFromAlg(vector<int>& arr, void (*func)(vector<int>& arr)) 
 {
-    time_t start, end;
-    double time_taken;
+    auto start = high_resolution_clock::now();
 
     if (func == &UseMergeSort)
     {
-        time(&start);
-        ios_base::sync_with_stdio(false);
-        
+        start = high_resolution_clock::now();
         arr = MergeSort(arr);
-        
-        time(&end);
-        time_taken = double(end - start);
     }
     else if (func == &UseInverseMergeSort)
     {
-        time(&start);
-        ios_base::sync_with_stdio(false);
-        
+        start = high_resolution_clock::now();
         arr = InverseMergeSort(arr);
-        
-        time(&end);
-        time_taken = double(end - start);
     }
     else if (func == &UseQuickSort)
     {
-        time(&start);
-        ios_base::sync_with_stdio(false);
-        
+        start = high_resolution_clock::now();
         QuickSort(arr, 0, arr.size() - 1);
-        
-        time(&end);
-        time_taken = double(end - start);
     }
     else if (func == &UseInverseQuickSort)
     {
-        time(&start);
-        ios_base::sync_with_stdio(false);
-        
+        start = high_resolution_clock::now();
         InverseQuickSort(arr, 0, arr.size() - 1);
-        
-        time(&end);
-        time_taken = double(end - start);
     }
     else
     {
-        time(&start);
-        ios_base::sync_with_stdio(false);
-        
+        start = high_resolution_clock::now();
         func(arr);
-        
-        time(&end);
-        time_taken = double(end - start);
     }
 
-    return time_taken;
+    auto end = high_resolution_clock::now();
+    return duration_cast<duration<double>>(end - start);
 }
+
+// double GetTimeTakenFromAlg(vector<int>& arr, void (*func)(vector<int>& arr)) 
+// {
+//     time_t start, end;
+//     double time_taken;
+
+//     if (func == &UseMergeSort)
+//     {
+//         time(&start);
+//         ios_base::sync_with_stdio(false);
+        
+//         arr = MergeSort(arr);
+        
+//         time(&end);
+//         time_taken = double(end - start);
+//     }
+//     else if (func == &UseInverseMergeSort)
+//     {
+//         time(&start);
+//         ios_base::sync_with_stdio(false);
+        
+//         arr = InverseMergeSort(arr);
+        
+//         time(&end);
+//         time_taken = double(end - start);
+//     }
+//     else if (func == &UseQuickSort)
+//     {
+//         time(&start);
+//         ios_base::sync_with_stdio(false);
+        
+//         QuickSort(arr, 0, arr.size() - 1);
+        
+//         time(&end);
+//         time_taken = double(end - start);
+//     }
+//     else if (func == &UseInverseQuickSort)
+//     {
+//         time(&start);
+//         ios_base::sync_with_stdio(false);
+        
+//         InverseQuickSort(arr, 0, arr.size() - 1);
+        
+//         time(&end);
+//         time_taken = double(end - start);
+//     }
+//     else
+//     {
+//         time(&start);
+//         ios_base::sync_with_stdio(false);
+        
+//         func(arr);
+        
+//         time(&end);
+//         time_taken = double(end - start);
+//     }
+    
+//     return time_taken;
+// }
 
 bool IsNumber(string s) //Funcion para saber si un string entregado es un número o no
 {
@@ -627,7 +665,7 @@ int main(int argc, char* argv[])
     cout << "Set de datos generados" << endl << endl 
     << "\tInician las carreras" << endl;
 
-    unordered_map<string, double> results;
+    unordered_map<string, duration<double>> results;
     int id;
     float minTime;
     string minTimeAlg;
@@ -649,10 +687,8 @@ int main(int argc, char* argv[])
         results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
         numbers.assign(ascArray.begin(), ascArray.end());
         results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-        
         numbers.assign(ascArray.begin(), ascArray.end());
         results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-
         numbers.assign(ascArray.begin(), ascArray.end());
         results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
@@ -662,11 +698,11 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
@@ -686,10 +722,8 @@ int main(int argc, char* argv[])
         results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
         numbers.assign(descArray.begin(), descArray.end());
         results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-        
         numbers.assign(descArray.begin(), descArray.end());
         results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-
         numbers.assign(descArray.begin(), descArray.end());
         results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
@@ -699,11 +733,11 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
@@ -723,10 +757,8 @@ int main(int argc, char* argv[])
         results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
         numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
         results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-        
         numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
         results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-
         numbers.assign(randomWithRepArray.begin(), randomWithRepArray.end());
         results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
@@ -736,18 +768,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera del tablero: Modo aleatorio sin repeticion" << endl << endl;
 
@@ -761,10 +792,8 @@ int main(int argc, char* argv[])
         results["Shell Sort"] = GetTimeTakenFromAlg(numbers, &ShellSort);
         numbers.assign(randomArray.begin(), randomArray.end());
         results["Merge Sort"] = GetTimeTakenFromAlg(numbers, &UseMergeSort);
-
         numbers.assign(randomArray.begin(), randomArray.end());
         results["Quick Sort"] = GetTimeTakenFromAlg(numbers, &UseQuickSort);
-
         numbers.assign(randomArray.begin(), randomArray.end());
         results["Heap Sort"] = GetTimeTakenFromAlg(numbers, &HeapSort);
 
@@ -774,18 +803,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         //INICIO CARRERA DE LOS CAMINOS ENTRE ALDEAS
         cout << endl << "************************************************************" << endl;
@@ -829,18 +857,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera de los caminos entre aldeas: Modo inversamente ordenado" << endl << endl;
 
@@ -865,18 +892,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera de los caminos entre aldeas: Modo aleatorio con repeticion" << endl << endl;
 
@@ -901,11 +927,11 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
@@ -937,11 +963,11 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
@@ -992,18 +1018,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera de objetos del inventario: Modo inversamente ordenado" << endl << endl;
 
@@ -1028,18 +1053,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera de objetos del inventario: Modo aleatorio con repeticion" << endl << endl;
 
@@ -1064,18 +1088,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera de objetos del inventario: Modo aleatorio sin repeticion" << endl << endl;
 
@@ -1100,11 +1123,11 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
@@ -1138,18 +1161,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera del tablero: Modo inversamente ordenado" << endl << endl;
 
@@ -1174,18 +1196,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera del tablero: Modo aleatorio con repeticion" << endl << endl;
 
@@ -1210,18 +1231,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera del tablero: Modo aleatorio sin repeticion" << endl << endl;
 
@@ -1246,11 +1266,11 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
@@ -1301,18 +1321,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera de los caminos entre aldeas: Modo inversamente ordenado" << endl << endl;
 
@@ -1337,18 +1356,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera de los caminos entre aldeas: Modo aleatorio con repeticion" << endl << endl;
 
@@ -1373,18 +1391,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera de los caminos entre aldeas: Modo aleatorio sin repeticion" << endl << endl;
 
@@ -1409,18 +1426,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         //INICIO DE LAS CARRERAS DE OBJETOS DEL INVENTARIO
         cout << endl << "************************************************************" << endl;
@@ -1464,18 +1480,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera de objetos del inventario: Modo inversamente ordenado" << endl << endl;
 
@@ -1500,18 +1515,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera de objetos del inventario: Modo aleatorio con repeticion" << endl << endl;
 
@@ -1536,18 +1550,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
 
         cout << endl << "Carrera de objetos del inventario: Modo aleatorio sin repeticion" << endl << endl;
 
@@ -1572,18 +1585,17 @@ int main(int argc, char* argv[])
         for (const auto& pair : results) 
         {
             const string& key = pair.first;
-            double value = pair.second;
-            cout << id << ". " << key << ", " << fixed << value << setprecision(5) << endl;
-            if (value < minTime)
+            duration<double> value = pair.second;
+            cout << id << ". " << key << ", " << value.count() << endl;
+            if (value.count() < minTime)
             {
-                minTime = value;
+                minTime = value.count();
                 minTimeAlg = key;
             }
             id++;
         }
 
         cout << endl << "El algoritmo con el menor tiempo fue " << minTimeAlg << " con " << minTime << " segundos" << endl;
-
     }
 
     return 0;
