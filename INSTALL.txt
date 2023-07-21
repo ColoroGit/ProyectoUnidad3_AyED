@@ -1,0 +1,7 @@
+Para hacer uso del programa, deberá descargar los archivos del repositorio y descomprimir la carpeta que contiene todos los archivos en una única carpeta en su ordenador que pueda reconocer y conozca su ruta de acceso.
+ 
+A continuación, deberá acceder a su consola de Windows (Windows PowerShell), e ir a la dirección de la carpeta en la que se encuentra el programa. Posterior a eso deberá correr el programa escribiendo el siguiente texto: ".\ProyectoU3".
+
+Una vez llegados a este punto iniciará el programa, y podrá interactuar desde la consola. Simplemente siga las instrucciones del mismo programa como se le indica. 
+
+Como alternativa, también puede usar un IDE como Dev-C++ o Visual Studio Code para compilar el programa como usted desee y usarlo desde ahí.
