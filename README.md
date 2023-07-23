@@ -39,7 +39,9 @@ Y los contextos teóricos en los que serían aplicados eran:
 
 
 Además de esto, se nos pidió como individuos hacer un video explicativo en el que se presenta la solución, los distintos aspectos que diferencian a estos algoritmos entre sí, los resultados de los tiempos, y un análisis respecto a cuál o cuáles algoritmos eran más eficientes en cuanto a tiempo en los distintos contextos. 
-Si desea ver el recurso audiovisual al que se hace referencia, puede acceder a él haciendo click [aquí](link).
+Si desea ver el recurso audiovisual al que se hace referencia, puede acceder a él haciendo click [aquí](https://drive.google.com/file/d/19-Mp5niduRtpUlDwABy7_abPbaxZivwt/view?usp=sharing).
+
+*Importante a tener en cuenta*: en este proyecto no se usó la versión optimizada de Bubble Sort, y por ende la notacion en el mejor caso cambia a n^2, lo cual aparece distinto en la tabla del video.
 
 Si decide probar el programa, siga las indicaciones del archivo INSTALL. Una vez instalado, usted tiene la opción, si lo desea, de modificar el archivo "Config.txt" para cambiar el rango de valores que se cargarán para cada carrera, siendo en cada linea el primer número el límite inferior, y el segundo, separado por una `,`, el límite superior. Tenga en mente que el programa se demora más en ser ejecutado mientras más valores tenga, e incluso dependiendo de su hardware puede que reciba errores si la cantidad de elementos sobrepasa los 32.000. 
 El resto del programa es simplemente la selección de si quiere que el ordenamiento se haga de forma ascendente o descendente, la creación de los arreglos numéricos, y los tiempos que demora cada algoritmo en ordenar cada set numérico con los distintos máximos definidos.

@@ -17,8 +17,6 @@ using std::chrono::high_resolution_clock;
 using std::chrono::duration;
 using std::chrono::duration_cast;
 
-//https://www.geeksforgeeks.org/measure-execution-time-with-high-precision-in-c-c++
-
 void PrintVector(vector<int> vector)
 {
     for (int i : vector)
@@ -477,65 +475,6 @@ auto GetTimeTakenFromAlg(vector<int>& arr, void (*func)(vector<int>& arr))
     auto end = high_resolution_clock::now();
     return duration_cast<duration<double>>(end - start);
 }
-
-// double GetTimeTakenFromAlg(vector<int>& arr, void (*func)(vector<int>& arr)) 
-// {
-//     time_t start, end;
-//     double time_taken;
-
-//     if (func == &UseMergeSort)
-//     {
-//         time(&start);
-//         ios_base::sync_with_stdio(false);
-        
-//         arr = MergeSort(arr);
-        
-//         time(&end);
-//         time_taken = double(end - start);
-//     }
-//     else if (func == &UseInverseMergeSort)
-//     {
-//         time(&start);
-//         ios_base::sync_with_stdio(false);
-        
-//         arr = InverseMergeSort(arr);
-        
-//         time(&end);
-//         time_taken = double(end - start);
-//     }
-//     else if (func == &UseQuickSort)
-//     {
-//         time(&start);
-//         ios_base::sync_with_stdio(false);
-        
-//         QuickSort(arr, 0, arr.size() - 1);
-        
-//         time(&end);
-//         time_taken = double(end - start);
-//     }
-//     else if (func == &UseInverseQuickSort)
-//     {
-//         time(&start);
-//         ios_base::sync_with_stdio(false);
-        
-//         InverseQuickSort(arr, 0, arr.size() - 1);
-        
-//         time(&end);
-//         time_taken = double(end - start);
-//     }
-//     else
-//     {
-//         time(&start);
-//         ios_base::sync_with_stdio(false);
-        
-//         func(arr);
-        
-//         time(&end);
-//         time_taken = double(end - start);
-//     }
-    
-//     return time_taken;
-// }
 
 bool IsNumber(string s) //Funcion para saber si un string entregado es un número o no
 {
